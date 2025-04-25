@@ -8,14 +8,11 @@ export default function ProductCard({ name, image, isNew }) {
 
     return (
         <div className="product-item">
-            {/* New Product Tag */}
             {isNew && (
                 <div className="new-tag">
                     NEW PRODUCT
                 </div>
             )}
-            
-            {/* Wishlist Button */}
             <button 
                 onClick={() => setIsWishlisted(!isWishlisted)}
                 className="wishlist-button"
@@ -25,7 +22,6 @@ export default function ProductCard({ name, image, isNew }) {
                 />
             </button>
 
-            {/* Product Image Container */}
             <div className="product-image-container">
                 <Image
                     src={image}
@@ -35,7 +31,6 @@ export default function ProductCard({ name, image, isNew }) {
                 />
             </div>
 
-            {/* Product Info */}
             <div className="product-info">
                 <h3 className="product-name">{name}</h3>
                 <div className="flex justify-between">

@@ -1,18 +1,30 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// src/app/layout.js
 import "./globals.css";
+import localFont from 'next/font/local'
+import { Inter } from 'next/font/google'
 
-// Font setup with CSS variable names
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// Configure Inter Google Font (good as a fallback or for UI elements)
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter', // Define CSS variable for Inter
+  display: 'swap',
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Configure your local Simplo Norm font
+const simploNorm = localFont({
+  src: [
+    {
+      path: './fonts/Simplo-Regular.otf',
+      weight: '400',
+      style: 'normal', 
+    },
+    
+  ],
+  variable: '--font-simplo-norm', 
+  display: 'swap',
+})
 
-// SEO metadata
+// SEO metadata (keeping yours)
 export const metadata = {
   title: "Appscrip Task – Your Name",
   description: "A responsive, SSR-ready product page built with Next.js for Appscrip.",
@@ -39,12 +51,16 @@ export const metadata = {
 // Root Layout
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    // --- FIX: Apply BOTH font variables to the html tag ---
+    <html lang="en" className={`${simploNorm.variable} ${inter.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" />
       </head>
+      {/* Keep your existing body classes */}
       <body className="min-h-screen bg-white text-gray-900 antialiased">
-        <main>{children}</main>
+        {/* You had <main> here, usually layout doesn't wrap children in <main> */}
+        {/* Let the page component decide on the <main> tag */}
+        {children}
       </body>
     </html>
   );

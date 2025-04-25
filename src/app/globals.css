@@ -1,16 +1,17 @@
-/* Base Reset and Defaults */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
-  font-family: system-ui, sans-serif;
+   font-family: "simploNorm", var(--font-inter), system-ui, sans-serif;
   line-height: 1.6;
-  color: #1f2937; /* Tailwind's gray-800 */
+  color: #1f2937;
   background-color: #ffffff;
 }
+
 
 /* Typography */
 .text-xl { font-size: 1.25rem; }
