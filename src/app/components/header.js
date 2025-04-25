@@ -69,7 +69,7 @@ export default function Header() {
                                     height={16}
                                 />
                             </div>
-                            <div>
+                            <div className="d-md-block">
                                 <Image
                                     src="/icons/shopping-bag.svg"
                                     alt="Cart"
@@ -77,7 +77,7 @@ export default function Header() {
                                     height={16}
                                 />
                             </div>
-                            <div className="relative" ref={userMenuRef}>
+                            <div className="relative d-md-block" ref={userMenuRef}>
                                 <button 
                                     className="flex items-center gap-2 hover:opacity-80"
                                     onClick={() => setShowUserMenu(!showUserMenu)}
@@ -121,7 +121,7 @@ export default function Header() {
                             </div>
                         </div>
                     </div>
-                    <div className="mx-auto">
+                    <div className="mx-auto d-md-block">
                         <div className="flex items-center justify-center gap-16 w-full">
                             {navItems.map((item, idx) => (
                                 <span key={idx} className="font-bold text-xl">

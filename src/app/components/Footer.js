@@ -53,8 +53,7 @@ export default function Footer() {
                 <div className="footer-section">
                     <h2>CURRENCY</h2>
                     <div className="currency-selector">
-                        <Image src="/icons/america.svg" alt="USD" width={24} height={24} />
-                        <span>USD</span>
+                        <Image src="/Language.png" alt="USD" width={72} height={24} />
                     </div>
                     <p className="currency-note">Transactions will be completed in Euros and a currency reference is available on hover.</p>
                 </div>
@@ -63,25 +62,25 @@ export default function Footer() {
                     <div className="footer-column">
                         <h3>mettā muse</h3>
                         <nav>
-                            <Link href="/about">About Us</Link>
-                            <Link href="/stories">Stories</Link>
-                            <Link href="/artisans">Artisans</Link>
-                            <Link href="/boutiques">Boutiques</Link>
-                            <Link href="/contact">Contact Us</Link>
-                            <Link href="/eu-compliance">EU Compliances Docs</Link>
+                            <Link href="/">About Us</Link>
+                            <Link href="/">Stories</Link>
+                            <Link href="/">Artisans</Link>
+                            <Link href="/">Boutiques</Link>
+                            <Link href="/">Contact Us</Link>
+                            <Link href="/">EU Compliances Docs</Link>
                         </nav>
                     </div>
 
                     <div className="footer-column">
                         <h3>QUICK LINKS</h3>
                         <nav>
-                            <Link href="/orders">Orders & Shipping</Link>
-                            <Link href="/join">Join/Login as a Seller</Link>
-                            <Link href="/payment">Payment & Pricing</Link>
-                            <Link href="/returns">Return & Refunds</Link>
-                            <Link href="/faqs">FAQs</Link>
-                            <Link href="/privacy">Privacy Policy</Link>
-                            <Link href="/terms">Terms & Conditions</Link>
+                            <Link href="/">Orders & Shipping</Link>
+                            <Link href="/">Join/Login as a Seller</Link>
+                            <Link href="/">Payment & Pricing</Link>
+                            <Link href="/">Return & Refunds</Link>
+                            <Link href="/">FAQs</Link>
+                            <Link href="/">Privacy Policy</Link>
+                            <Link href="/">Terms & Conditions</Link>
                         </nav>
                     </div>
 
@@ -95,9 +94,8 @@ export default function Footer() {
                                 <Image src="/linkedIn.png" alt="LinkedIn" width={24} height={24} />
                             </Link>
                         </div>
-                    </div>
-                </div>
-                <div className="footer-bottom">
+
+                        <div className="footer-bottom">
                     <h3>mettā muse ACCEPTS</h3>
                     <div className="payment-methods">
                         {paymentMethods.map((method) => (
@@ -109,6 +107,8 @@ export default function Footer() {
                                 height={24}
                             />
                         ))}
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>
@@ -138,8 +138,7 @@ export default function Footer() {
                 <div className="mobile-section">
                     <h2>CURRENCY</h2>
                     <div className="currency-selector">
-                        <Image src="/icons/america.svg" alt="USD" width={24} height={24} />
-                        <span>USD</span>
+                     <Image src="/Language.png" alt="USD" width={72} height={24} />
                     </div>
                 </div>
 
@@ -153,12 +152,12 @@ export default function Footer() {
                     </button>
                     {expandedSection === 'metta' && (
                         <nav className="accordion-content">
-                            <Link href="/about">About Us</Link>
-                            <Link href="/stories">Stories</Link>
-                            <Link href="/artisans">Artisans</Link>
-                            <Link href="/boutiques">Boutiques</Link>
-                            <Link href="/contact">Contact Us</Link>
-                            <Link href="/eu-compliance">EU Compliances Docs</Link>
+                            <Link href="/">About Us</Link>
+                            <Link href="/">Stories</Link>
+                            <Link href="/">Artisans</Link>
+                            <Link href="/">Boutiques</Link>
+                            <Link href="/">Contact Us</Link>
+                            <Link href="/">EU Compliances Docs</Link>
                         </nav>
                     )}
 
@@ -171,13 +170,13 @@ export default function Footer() {
                     </button>
                     {expandedSection === 'quick' && (
                         <nav className="accordion-content">
-                            <Link href="/orders">Orders & Shipping</Link>
-                            <Link href="/join">Join/Login as a Seller</Link>
-                            <Link href="/payment">Payment & Pricing</Link>
-                            <Link href="/returns">Return & Refunds</Link>
-                            <Link href="/faqs">FAQs</Link>
-                            <Link href="/privacy">Privacy Policy</Link>
-                            <Link href="/terms">Terms & Conditions</Link>
+                            <Link href="/">Orders & Shipping</Link>
+                            <Link href="/">Join/Login as a Seller</Link>
+                            <Link href="/">Payment & Pricing</Link>
+                            <Link href="/">Return & Refunds</Link>
+                            <Link href="/">FAQs</Link>
+                            <Link href="/">Privacy Policy</Link>
+                            <Link href="/">Terms & Conditions</Link>
                         </nav>
                     )}
 
@@ -191,16 +190,16 @@ export default function Footer() {
                     {expandedSection === 'follow' && (
                         <div className="accordion-content social-links">
                             <Link href="https://instagram.com">
-                                <Image src="/insta.svg" alt="Instagram" width={24} height={24} />
+                                <Image src="/insta.png" alt="Instagram" width={24} height={24} />
                             </Link>
                             <Link href="https://linkedin.com">
-                                <Image src="/linkedIn.svg" alt="LinkedIn" width={24} height={24} />
+                                <Image src="/linkedIn.png" alt="LinkedIn" width={24} height={24} />
                             </Link>
                         </div>
                     )}
                 </div>
 
-                <div className="mobile-section">
+                <div className="mobile-section ">
                     <h3>mettā muse ACCEPTS</h3>
                     <div className="payment-methods">
                         {paymentMethods.map((method) => (

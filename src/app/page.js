@@ -10,7 +10,7 @@ import Header from './components/header'
 // Add cache configuration
 async function getProducts() {
   const res = await fetch('https://fakestoreapi.com/products', {
-    next: { revalidate: 3600 } // Cache for 1 hour
+    next: { revalidate: 3600 } 
   });
 
   if (!res.ok) {
@@ -22,7 +22,7 @@ async function getProducts() {
 
 async function getCategories() {
   const res = await fetch('https://fakestoreapi.com/products/categories', {
-    next: { revalidate: 3600 } // Cache for 1 hour
+    next: { revalidate: 3600 } 
   });
 
   if (!res.ok) {
@@ -37,7 +37,6 @@ export default function Home() {
   const [productsData, setProductsData] = useState([]);
   const [categoriesData, setCategoriesData] = useState([]);
 
-  // Fetch data on component mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -73,7 +72,7 @@ export default function Home() {
 
         <div className="content-wrapper">
           <div className="filter-header">
-            <div className="filter-left">
+            <div className="filter-left d-md-flex ">
               <span className="items-count">
                 {productsData.length} ITEMS
               </span>
@@ -90,6 +89,9 @@ export default function Home() {
                   <span>{isFilterVisible ? 'Hide filter' : 'Show filter'}</span>
                 </button>
               </div>
+            </div>
+            <div className="d-md-none mobile-filter">
+              <button onClick={toggleFilter} className='filter-button font-bold'>Filters</button>
             </div>
             <SortDropdown />
           </div>

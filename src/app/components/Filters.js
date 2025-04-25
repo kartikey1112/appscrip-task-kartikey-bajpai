@@ -3,12 +3,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const filterCategories = [
-    {
-        id: 'customizable',
-        title: 'CUSTOMIZABLE',
-        type: 'text',
-        options: ['All', 'Yes', 'No']
-    },
+
     {
         id: 'idealFor',
         title: 'IDEAL FOR',
@@ -63,6 +58,8 @@ const filterCategories = [
 export default function Filters() {
     const [expandedCategory, setExpandedCategory] = useState(null)
     const [selectedOptions, setSelectedOptions] = useState({})
+    const [isCustomizableChecked, setIsCheckCustomizableChecked] = useState(false)
+
 
     const handleCategoryClick = (categoryId) => {
         setExpandedCategory(expandedCategory === categoryId ? null : categoryId)
@@ -76,7 +73,7 @@ export default function Filters() {
             }))
             return
         }
-        
+
         setSelectedOptions(prev => ({
             ...prev,
             [categoryId]: {
@@ -95,12 +92,22 @@ export default function Filters() {
 
     return (
         <div className="filter-sidebar">
+            <div className='flex justify-start gap-1 items-center customizable-container'>
+                <input
+                    type="checkbox"
+                    checked={isCustomizableChecked}
+                    onChange={() => setIsCheckCustomizableChecked(prev => !prev)}
+                    className='customizable-input'
+                />
+                <h3 className='customizable-text'>Customizable</h3>
+
+            </div>
             {filterCategories.map((category) => (
                 <div key={category.id} className="filter-section">
                     <div className="filter-header">
                         <h3>{category.title}</h3>
                         {category.type === 'dropdown' && expandedCategory === category.id && (
-                            <button 
+                            <button
                                 className="unselect-all"
                                 onClick={() => handleOptionChange(category.id, 'All')}
                             >
@@ -111,24 +118,24 @@ export default function Filters() {
                     {category.type === 'text' ? (
                         <div className="filter-text">
                             <span>All</span>
-                            <Image 
-                                src="/icons/arrow-down.svg" 
-                                alt="expand" 
-                                width={16} 
+                            <Image
+                                src="/icons/arrow-down.svg"
+                                alt="expand"
+                                width={16}
                                 height={16}
                             />
                         </div>
                     ) : (
                         <div className={`filter-dropdown ${expandedCategory === category.id ? 'expanded' : ''}`}>
-                            <button 
+                            <button
                                 className="dropdown-button"
                                 onClick={() => handleCategoryClick(category.id)}
                             >
                                 <span>{getSelectedCount(category.id)}</span>
-                                <Image 
-                                    src="/icons/arrow-down.svg" 
-                                    alt="expand" 
-                                    width={16} 
+                                <Image
+                                    src="/icons/arrow-down.svg"
+                                    alt="expand"
+                                    width={16}
                                     height={16}
                                     className={expandedCategory === category.id ? 'rotate-180' : ''}
                                 />

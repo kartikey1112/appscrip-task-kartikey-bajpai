@@ -63,14 +63,14 @@ export default function Products({ initialProducts = [] }) {
                             </div>
                         ) : (
                             <div className="product-info-locked">
-                                <p className="text-center text-gray-500">
-                                    Sign in to view product details
+                                <p className="text-gray-500 font-bold text-xl px-1">
+                                   PRODUCT NAME
                                 </p>
                                 <button
-                                    onClick={() => setShowLogin(true)}
-                                    className="w-full mt-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+                                  
+                                    className=" mt-2 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 upperCase fs-14"
                                 >
-                                    Sign In
+                                    <span   onClick={() => setShowLogin(true)} className='text-decoration-underline '>Sign in</span> or Create an account to see pricing
                                 </button>
                             </div>
                         )}

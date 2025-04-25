@@ -41,7 +41,7 @@ export default function SortDropdown() {
     }
 
     return (
-        <div className="sort-container">
+        <div className="sort-container mobile-filter">
             <button 
                 className="sort-button"
                 onClick={() => setIsOpen(!isOpen)}
@@ -64,7 +64,7 @@ export default function SortDropdown() {
                             onClick={() => handleOptionClick(option)}
                         >
                             {selectedOption.id === option.id && (
-                               <Check className='text-gray-900'/>
+                               <Check className='text-gray-900 w-4 h-4'/>
                             )}
                             <span>{option.label}</span>
                         </button>

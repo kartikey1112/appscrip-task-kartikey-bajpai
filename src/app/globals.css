@@ -89,9 +89,9 @@ a {
 }
 
 .container {
-  max-width: 1248px; /* or whatever width you prefer */
-  margin: 0 auto;     /* center the container */
-  padding: 0 1rem;    /* horizontal padding */
+  max-width: 1248px; 
+  margin: 0 auto;     
+  padding: 0 1rem;    
   width: 100%;
 }
 
@@ -408,7 +408,6 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 24px 0;
-  border-bottom: 1px solid #E5E5E5;
 }
 
 .filter-left {
@@ -457,6 +456,8 @@ button {
 .filter-section {
   position: relative;
   padding-bottom: 16px;
+  border-bottom: 1px solid #E5E5E5;
+
 }
 
 .filter-header {
@@ -587,8 +588,7 @@ button {
     display: none;
   }
 
-  .products-grid,
-  .filter-sidebar + .products-grid {
+  .filter-sidebar  {
     grid-template-columns: repeat(1, 1fr);
   }
 }
@@ -748,8 +748,6 @@ button {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  border: 1px solid #E5E5E5;
-  border-radius: 4px;
   width: fit-content;
   cursor: pointer;
 }
@@ -799,7 +797,6 @@ button {
 
 .footer-bottom {
   grid-column: 1 / -1;
-  border-top: 1px solid #E5E5E5;
   padding-top: 24px;
 }
 
@@ -893,6 +890,11 @@ button {
     color: #ffffff;
   }
 
+  .mobile-section h3 {
+   
+    color: #ffffff;
+  }
+
   .mobile-section p {
     font-size: 14px;
     color: #fff;
@@ -976,7 +978,7 @@ button {
 .product-image-container {
   position: relative;
   aspect-ratio: 1;
-  background: #f5f5f5;
+  background: #ffffff;
 }
 
 .product-image {
@@ -1352,3 +1354,160 @@ button {
 .rotate-180 {
   transform: rotate(180deg);
 }
+/* --- Add/Modify these styles in globals.css --- */
+
+/* Header Styles */
+.main-header {
+  /* py-4 border-b border-gray-200 bg-white sticky top-0 z-50 */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom-width: 1px;
+  border-color: #e5e7eb; /* border-gray-200 */
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 50; /* Ensure it's above content */
+}
+
+/* Header Container alignment */
+.main-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* px-4 applied in component */
+}
+
+/* Header Sections Flex Control */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* gap-3 */
+}
+.header-center {
+  flex-grow: 1;
+  text-align: center;
+  /* Prevent center from collapsing completely if needed */
+  min-width: 50px;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* gap-3 */
+}
+
+/* Icon Button base style (if needed) */
+.main-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.main-header button img { /* Ensure icons align well */
+  display: block;
+}
+
+/* Hamburger Button specific */
+.hamburger-btn {
+  /* p-2 */
+  padding: 0.5rem;
+}
+
+/* LOGO Text Adjustments */
+.main-header .header-center span {
+  font-size: 1.5rem; /* text-2xl */
+  line-height: 2rem;
+  font-weight: 800; /* font-extrabold */
+  letter-spacing: 0.05em; /* tracking-wider */
+}
+
+/* Auth Dropdown position (ensure it's correct relative to the button) */
+.auth-dropdown {
+  position: absolute;
+  top: calc(100% + 8px); /* Position below the button */
+  right: 0;
+  min-width: 120px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 60; /* Above header content */
+  /* Hidden by default, shown by JS/CSS */
+}
+
+.d-md-block{
+  display: none;
+}  
+
+.d-md-flex{
+  display: none;
+}
+
+
+
+@media (min-width: 768px) { 
+  .d-md-block {
+    display: block;
+  }
+  .d-md-none{
+    display: none;
+  }
+
+  
+.d-md-flex{
+  display: flex;
+}
+}
+
+@media (max-width: 576px) { 
+  .mobile-filter{
+   width: 50%;
+   display: flex;
+   justify-content: center;
+  }
+
+  .filter-button{
+    border-right: 1px solid #E5E5E5;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    color: #000;
+  }
+
+  .products-grid{
+    grid-template-rows: repeat(2, 1fr) !important;
+  }
+}
+
+.customizable-text{
+  font-size:14px;
+  font-weight: 700;
+}
+
+.customizable-container{
+  border-bottom: 1px solid #E5E5E5;
+  padding-bottom: 1.5rem;
+  margin-bottom:1.5rem;
+}
+
+.customizable-input{
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+}
+
+.text-decoration-underline{
+  text-decoration: underline;
+}
+
+.upperCase{
+  text-transform: uppercase;
+}
+
+.fs-14{
+  font-size: 14px;
+}
+
+.w-4{
+  width: 1rem;
+}
+.h-4{
+  height: 1rem;
+}
+
