@@ -26,10 +26,10 @@ const simploNorm = localFont({
 
 // SEO metadata (keeping yours)
 export const metadata = {
-  title: "Appscrip Task – Your Name",
+  title: "Appscrip Task – Kartikey Bajpai",
   description: "A responsive, SSR-ready product page built with Next.js for Appscrip.",
   keywords: "Appscrip, Next.js, SSR, React, FakeStore API, product listing",
-  authors: [{ name: "Your Name", url: "https://yourportfolio.com" }],
+  authors: [{ name: "Kartikey Bajpai", url: "https://kartikey-portfolio-eosin.vercel.app/" }],
   openGraph: {
     title: "Appscrip Task",
     description: "SSR-ready product listing page built with Next.js",
