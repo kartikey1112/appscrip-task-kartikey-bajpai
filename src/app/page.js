@@ -1,95 +1,106 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+import { Suspense, useState, useEffect } from 'react'
+import Image from 'next/image'
+import Products from './components/products'
+import Filters from './components/Filters'
+import SortDropdown from './components/SortDropdown'
+import Footer from './components/Footer'
+import Header from './components/header'
+
+// Add cache configuration
+async function getProducts() {
+  const res = await fetch('https://fakestoreapi.com/products', {
+    next: { revalidate: 3600 } // Cache for 1 hour
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch products');
+  }
+
+  return res.json();
+}
+
+async function getCategories() {
+  const res = await fetch('https://fakestoreapi.com/products/categories', {
+    next: { revalidate: 3600 } // Cache for 1 hour
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch categories');
+  }
+
+  return res.json();
+}
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isFilterVisible, setIsFilterVisible] = useState(true);
+  const [productsData, setProductsData] = useState([]);
+  const [categoriesData, setCategoriesData] = useState([]);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+  // Fetch data on component mount
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [products, categories] = await Promise.all([
+          getProducts(),
+          getCategories()
+        ]);
+        setProductsData(products);
+        setCategoriesData(categories);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const toggleFilter = () => {
+    setIsFilterVisible(!isFilterVisible);
+  };
+
+  return (
+    <>
+      <Header />
+      <main className="main-container">
+        <div className="header">
+          <h1>Discover our products</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus
+            scelerisque. Dolor integer scelerisque nibh amet mi ut elementum dolor.
+          </p>
         </div>
+
+        <div className="content-wrapper">
+          <div className="filter-header">
+            <div className="filter-left">
+              <span className="items-count">
+                {productsData.length} ITEMS
+              </span>
+              <div className="filter-toggle">
+                <Image
+                  width={16}
+                  height={16}
+                  src="/icons/arrow-left.svg"
+                  alt="filter"
+                  className={isFilterVisible ? 'rotate-180' : ''}
+                  unoptimized
+                />
+                <button className="filter-button" onClick={toggleFilter}>
+                  <span>{isFilterVisible ? 'Hide filter' : 'Show filter'}</span>
+                </button>
+              </div>
+            </div>
+            <SortDropdown />
+          </div>
+
+          <div className="products-container">
+            {isFilterVisible && <Filters categories={categoriesData} />}
+            <Products initialProducts={productsData} />
+          </div>
+        </div>
+        <Footer />
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    </>
+  )
 }
