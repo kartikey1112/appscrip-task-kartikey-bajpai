@@ -1,5 +1,5 @@
-# Appscrip Task – Your Name
-
+# Appscrip Task – Kartikey Bajpai
+# Deployed URL:https://appscrip-kartikey-bajpai.netlify.app/
 A responsive, SSR-ready product listing page built with Next.js for Appscrip.
 
 ## Project Overview
